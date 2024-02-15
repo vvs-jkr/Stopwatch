@@ -1,0 +1,232 @@
+@import url("https://fonts.googleapis.com/css2?family=Cairo&display=swap");
+
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+body {
+	display: grid;
+	height: 100vh;
+	place-items: center;
+	background: linear-gradient(to bottom right, grey, black);
+}
+
+.stopwatch {
+	padding: 2em;
+	font-size: 2vmin;
+	font-family: sans-serif;
+	filter: drop-shadow(2em 2em 1em black);
+	position: relative;
+	--animation-play-state: paused;
+}
+.rim {
+	padding: 2.5em;
+	background: linear-gradient(
+		to bottom right,
+		rgb(155, 155, 155),
+		rgb(196, 196, 196)
+	);
+	box-shadow: inset 1em 1em 2em rgba(255, 255, 255, 255.5),
+		inset -1em -1em 2em rgba(0, 0, 0, 0.8);
+	border-radius: 50%;
+}
+.clock-container {
+	border-radius: 50%;
+	display: grid;
+	grid-template-areas: "clock-container-center";
+	border: 0em solid black;
+	background: linear-gradient(to top left, rgb(200, 200, 200), white);
+	box-shadow: inset 0.5em 0.5em 1em rgba(0, 0, 0, 0.8),
+		inset -0.5em -0.5em 1em rgba(255, 255, 255, 0.5);
+	font-family: "Cairo", sans-serif;
+	line-height: 1;
+	position: relative;
+}
+
+.clock {
+	grid-area: clock-container-center;
+	width: 30em;
+	aspect-ratio: 1/1;
+	border-radius: 50%;
+	display: grid;
+	grid-template-areas: "sub-clock-container-center";
+	overflow: hidden;
+}
+.minutes-clock {
+	font-size: 0.32em;
+	justify-self: center;
+	margin-top: 14%;
+}
+.clock > * {
+	grid-area: sub-clock-container-center;
+	width: 100%;
+	height: 100%;
+}
+
+.clock > .lines {
+	display: grid;
+	grid-template-areas: "lines-center";
+	place-items: center;
+}
+.clock > .lines > .line {
+	grid-area: lines-center;
+	--line-width: 0.1em;
+	--line-length: 1em;
+	width: var(--line-width);
+	height: 100%;
+	background-image: linear-gradient(
+		black var(--line-length),
+		transparent 0 calc(100% - var(--line-length)),
+		black 0
+	);
+	transform: rotate(calc(360deg / 60 * var(--line-idx)));
+}
+
+.clock > .lines > div:nth-child(5n + 1) {
+	--line-width: 0.25em;
+	--line-length: 1.5em;
+}
+
+.clock > .numbers {
+	display: grid;
+	grid-template-areas: "numbers-center";
+	place-items: center;
+}
+.clock > .numbers > .number {
+	grid-area: numbers-center;
+	height: 86%;
+	font-size: 1.8em;
+	--rotate: calc(360deg / 12 * var(--number-idx));
+	transform: rotate(var(--rotate));
+}
+.clock > .numbers > .number > div {
+	transform: rotate(calc(-1 * var(--rotate)));
+}
+
+.clock > .handle {
+	display: grid;
+	grid-template-areas: "handle-center";
+	place-items: center;
+	z-index: 2;
+	filter: drop-shadow(0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5));
+}
+
+.clock > .handle > .pointer {
+	grid-area: handle-center;
+	background-color: #ce3131;
+	width: 1em;
+	height: 95%;
+	clip-path: polygon(55% 0%, 100% 60%, 0% 60%, 45% 0);
+	--duration: 60s;
+	--timingFunction: linear;
+	animation: clock-anim var(--duration) var(--timingFunction) infinite;
+	animation-play-state: var(--animation-play-state);
+}
+
+.minutes-clock > .handle > .pointer {
+	--duration: 3600s;
+	--timingFunction: steps(60, end);
+}
+@keyframes clock-anim {
+	to {
+		transform: rotate(360deg);
+	}
+}
+.clock > .handle > .circle {
+	grid-area: handle-center;
+	background-color: #ce3131;
+	width: 2em;
+	aspect-ratio: 1/1;
+	z-index: 1;
+	border-radius: 50%;
+	display: grid;
+	place-content: center;
+}
+.clock > .handle > .circle > div {
+	width: 1em;
+	aspect-ratio: 1/1;
+	border-radius: 50%;
+	background: linear-gradient(
+		to bottom right,
+		rgb(194, 194, 194),
+		rgba(255, 255, 255, 1)
+	);
+	box-shadow: inset 0.05em 0.05em 0.1em rgba(255, 255, 255, 0.5),
+		inset -0.05em -0.05em 0.1em rgba(0, 0, 0, 0.5),
+		0.1em 0.1em 0.2em rgba(0, 0, 0, 0.5);
+}
+
+.clock-container > .glass-overlay {
+	grid-area: clock-container-center;
+	content: "";
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	z-index: 2;
+	/* background: blue; */
+	background-image: radial-gradient(
+		circle at top left,
+		rgba(255, 255, 255, 0.25) 60%,
+		transparent 60.9%,
+		rgba(0, 0, 0, 0.01)
+	);
+	filter: ba;
+}
+
+.buttons {
+	position: absolute;
+	left: 50%;
+	height: 100%;
+	top: 0;
+	transform: translateX(-50%);
+	display: grid;
+	grid-template-areas: "button-container-center";
+	z-index: -1;
+}
+.buttons > .button {
+	grid-area: button-container-center;
+	transform: rotate(var(--rotate));
+}
+
+.buttons > .button-left {
+	--rotate: -30deg;
+}
+.buttons > .button-right {
+	--rotate: 30deg;
+}
+.buttons > .button > div {
+	background: rgb(200, 200, 200);
+	width: 2.5em;
+	height: 2.5em;
+	border-radius: 0.5em;
+	--knobColor: #ce3131;
+	background-image: linear-gradient(var(--knobColor), 0.5em, transparent 0.5em),
+		linear-gradient(
+			to right,
+			transparent 0 30%,
+			rgba(0, 0, 0, 0.3) 30% 70%,
+			rgba(0, 0, 0, 0.5) 70% 72%,
+			transparent 70% 100%
+		);
+	background-size: 0.3em 100%;
+	background-position: center;
+	box-shadow: inset -0.5em 0em 0.25em rgba(0, 0, 0, 0.25),
+		inset 0.5em 0em 0.25em rgba(255, 255, 255, 0.25);
+
+	transform: translateY(var(--translateY, 0));
+	cursor: pointer;
+}
+
+.stopwatch.running {
+	--animation-play-state: running;
+}
+.stopwatch.running .buttons > .button-right > div {
+	--translateY: 0.75em;
+	--knobColor: rgb(4, 97, 4);
+}
+.stopwatch .buttons .button:active > div {
+	--translateY: 1.5em;
+}

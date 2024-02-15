@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="style.css">
+	<title>Stopwatch</title>
+</head>
+<body>
+	<div class="stopwatch">
+		<div class="buttons">
+			<div class="button button-left" title="Reset">
+				<div></div>
+			</div>
+			<div class="button button-right" title="Start / Stop">
+				<div></div>
+			</div>
+		</div>
+		<div class="rim">
+			<div class="clock-container">
+				<div class="clock minutes-clock">
+					<div class="lines">
+						<div class="line" style="--line-idx:0"></div>
+						<div class="line" style="--line-idx:1"></div>
+						<div class="line" style="--line-idx:2"></div>
+						<div class="line" style="--line-idx:3"></div>
+						<div class="line" style="--line-idx:4"></div>
+						<div class="line" style="--line-idx:5"></div>
+						<div class="line" style="--line-idx:6"></div>
+						<div class="line" style="--line-idx:7"></div>
+						<div class="line" style="--line-idx:8"></div>
+						<div class="line" style="--line-idx:9"></div>
+						<div class="line" style="--line-idx:10"></div>
+						<div class="line" style="--line-idx:11"></div>
+						<div class="line" style="--line-idx:12"></div>
+						<div class="line" style="--line-idx:13"></div>
+						<div class="line" style="--line-idx:14"></div>
+						<div class="line" style="--line-idx:15"></div>
+						<div class="line" style="--line-idx:16"></div>
+						<div class="line" style="--line-idx:17"></div>
+						<div class="line" style="--line-idx:18"></div>
+						<div class="line" style="--line-idx:19"></div>
+						<div class="line" style="--line-idx:20"></div>
+						<div class="line" style="--line-idx:21"></div>
+						<div class="line" style="--line-idx:22"></div>
+						<div class="line" style="--line-idx:23"></div>
+						<div class="line" style="--line-idx:24"></div>
+						<div class="line" style="--line-idx:25"></div>
+						<div class="line" style="--line-idx:26"></div>
+						<div class="line" style="--line-idx:27"></div>
+						<div class="line" style="--line-idx:28"></div>
+						<div class="line" style="--line-idx:29"></div>
+					</div>
+					<div class="numbers">
+						<div class="number" style="--number-idx:0">
+							<div>60</div>
+						</div>
+						<div class="number" style="--number-idx:1">
+							<div>5</div>
+						</div>
+						<div class="number" style="--number-idx:2">
+							<div>10</div>
+						</div>
+						<div class="number" style="--number-idx:3">
+							<div>15</div>
+						</div>
+						<div class="number" style="--number-idx:4">
+							<div>20</div>
+						</div>
+						<div class="number" style="--number-idx:5">
+							<div>25</div>
+						</div>
+						<div class="number" style="--number-idx:6">
+							<div>30</div>
+						</div>
+						<div class="number" style="--number-idx:7">
+							<div>35</div>
+						</div>
+						<div class="number" style="--number-idx:8">
+							<div>40</div>
+						</div>
+						<div class="number" style="--number-idx:9">
+							<div>45</div>
+						</div>
+						<div class="number" style="--number-idx:10">
+							<div>50</div>
+						</div>
+						<div class="number" style="--number-idx:11">
+							<div>55</div>
+						</div>
+					</div>
+					<div class="handle">
+						<div class="pointer"></div>
+						<div class="circle">
+							<div></div>
+						</div>
+					</div>
+				</div>
+				<div class="clock seconds-clock">
+					<div class="lines">
+						<div class="line" style="--line-idx:0"></div>
+						<div class="line" style="--line-idx:1"></div>
+						<div class="line" style="--line-idx:2"></div>
+						<div class="line" style="--line-idx:3"></div>
+						<div class="line" style="--line-idx:4"></div>
+						<div class="line" style="--line-idx:5"></div>
+						<div class="line" style="--line-idx:6"></div>
+						<div class="line" style="--line-idx:7"></div>
+						<div class="line" style="--line-idx:8"></div>
+						<div class="line" style="--line-idx:9"></div>
+						<div class="line" style="--line-idx:10"></div>
+						<div class="line" style="--line-idx:11"></div>
+						<div class="line" style="--line-idx:12"></div>
+						<div class="line" style="--line-idx:13"></div>
+						<div class="line" style="--line-idx:14"></div>
+						<div class="line" style="--line-idx:15"></div>
+						<div class="line" style="--line-idx:16"></div>
+						<div class="line" style="--line-idx:17"></div>
+						<div class="line" style="--line-idx:18"></div>
+						<div class="line" style="--line-idx:19"></div>
+						<div class="line" style="--line-idx:20"></div>
+						<div class="line" style="--line-idx:21"></div>
+						<div class="line" style="--line-idx:22"></div>
+						<div class="line" style="--line-idx:23"></div>
+						<div class="line" style="--line-idx:24"></div>
+						<div class="line" style="--line-idx:25"></div>
+						<div class="line" style="--line-idx:26"></div>
+						<div class="line" style="--line-idx:27"></div>
+						<div class="line" style="--line-idx:28"></div>
+						<div class="line" style="--line-idx:29"></div>
+					</div>
+					<div class="numbers">
+						<div class="number" style="--number-idx:0">
+							<div>60</div>
+						</div>
+						<div class="number" style="--number-idx:1">
+							<div>5</div>
+						</div>
+						<div class="number" style="--number-idx:2">
+							<div>10</div>
+						</div>
+						<div class="number" style="--number-idx:3">
+							<div>15</div>
+						</div>
+						<div class="number" style="--number-idx:4">
+							<div>20</div>
+						</div>
+						<div class="number" style="--number-idx:5">
+							<div>25</div>
+						</div>
+						<div class="number" style="--number-idx:6">
+							<div>30</div>
+						</div>
+						<div class="number" style="--number-idx:7">
+							<div>35</div>
+						</div>
+						<div class="number" style="--number-idx:8">
+							<div>40</div>
+						</div>
+						<div class="number" style="--number-idx:9">
+							<div>45</div>
+						</div>
+						<div class="number" style="--number-idx:10">
+							<div>50</div>
+						</div>
+						<div class="number" style="--number-idx:11">
+							<div>55</div>
+						</div>
+					</div>
+					<div class="handle">
+						<div class="pointer"></div>
+						<div class="circle">
+							<div></div>
+						</div>
+					</div>
+	
+				</div>
+				<div class="glass-overlay"></div>
+			</div>
+		</div>
+	</div>
+
+	<script src="index.js"></script>
+</body>
+</html>
